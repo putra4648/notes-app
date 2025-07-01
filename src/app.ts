@@ -1,9 +1,19 @@
 import Koa from "koa";
 import koaBody from "koa-body";
 import helmet from "koa-helmet";
+import db from "./db";
 import router from "./routes";
 
 const app = new Koa();
+
+db.sync({ force: true })
+  .then(() => {
+    app.context.database = db;
+    console.log("All models were synchronized successfully.");
+  })
+  .catch((err) => {
+    app.emit("error", err);
+  });
 
 // logger
 app.use(async (ctx, next) => {
