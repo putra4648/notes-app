@@ -1,0 +1,17 @@
+services:
+  note-db:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=notes
+    ports:
+      - 5432:5432
+    volumes:
+      - note_db_volume:/var/lib/postgresql/data
+
+networks:
+  notes_app_net:
+
+volumes:
+  note_db_volume:
