@@ -21,9 +21,6 @@ noteRouter
       const note = await Note.create({
         id: nanoid(),
         name: body.name,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        isDone: false,
       });
       await note.save();
       ctx.body = "Success add data";

@@ -15,9 +15,11 @@ const Note = db.define(
     },
     createdAt: {
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
     updatedAt: {
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
     isDone: {
       type: DataTypes.BOOLEAN,
